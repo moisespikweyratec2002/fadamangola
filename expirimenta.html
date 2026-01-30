@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comité Nacional Jogos Fadam-Angola</title>
+    <meta name="description" content="1º Jogos Nacionais de Fadam-Angola 2026 - Inscrições Abertas">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset básico */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; color: #fff; background: #000; line-height: 1.6; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; }
+        
+        /* Container principal */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        
+        /* Header */
+        header {
+            background: rgba(0,0,0,0.7);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: background 0.3s;
+        }
+        header.scrolled { background: rgba(0,0,0,0.9); }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: #ff6b00; }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li { margin-left: 30px; }
+        nav ul li a {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover { color: #ff6b00; }
+        
+        /* Hero Section (baseado na primeira imagem) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://via.placeholder.com/1920x1080/111111/333333?text=Imagem+de+Fundo+Artes+Marciais') center/cover no-repeat;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 60px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero h1 span { color: #ff6b00; }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn {
+            display: inline-block;
+            background: #ff6b00;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #e55a00; }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: #111;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+        .about-content {
+            flex: 1;
+            padding-left: 50px;
+            min-width: 300px;
+        }
+        .about-content h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .about-content h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: #ff6b00;
+            display: block;
+            margin-top: 10px;
+        }
+        .about-content p { margin-bottom: 30px; opacity: 0.9; }
+        
+        /* Modalidades Section (baseado no pôster) */
+        .courses {
+            padding: 100px 0;
+            background: #000;
+            text-align: center;
+        }
+        .courses h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .courses h3 {
+            font-size: 24px;
+            margin-bottom: 60px;
+            color: #ff6b00;
+        }
+        .modalities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .modality {
+            position: relative;
+        }
+        .modality img {
+            border-radius: 50%;
+            border: 5px solid #ff6b00;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 0 auto;
+        }
+        .modality span {
+            display: block;
+            margin-top: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        /* Inscrições Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://via.placeholder.com/1920x600/111111/333333?text=Crowd+Background') center/cover;
+            text-align: center;
+        }
+        .cta h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+        .contacts {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff6b00;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 48px; }
+            .about { flex-direction: column; text-align: center; }
+            .about-content { padding-left: 0; margin-top: 40px; }
+        }
+        @media (max-width: 768px) {
+            nav ul { flex-direction: column; }
+            nav ul li { margin: 10px 0; }
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; }
+        }
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 30px; }
+            .modalities-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">COMITÉ FADAM</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Modalidades</a></li>
+                    <li><a href="#">Inscrições</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>1º Jogos Nacionais<br>de <span>Fadam-Angola 2026</span></h1>
+            <p>15 a 30 de Agosto • O maior evento de artes marciais do país</p>
+            <a href="#inscricoes" class="btn">Inscreva sua Academia</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <img src="https://via.placeholder.com/600x800/222222/ffffff?text=Atleta+Fadam" alt="Atleta Fadam" class="about-img">
+            <div class="about-content">
+                <h2>Sobre Nós<br><span style="color:#ff6b00;">O Comité Nacional</span></h2>
+                <p>O Comité Nacional Jogos Fadam-Angola é a organização responsável pela promoção e desenvolvimento das artes marciais em Angola, integrando desporto, educação, cultura e turismo.</p>
+                <p>Em 2026 realizamos os primeiros Jogos Nacionais, reunindo as melhores academias e atletas do país em um evento histórico.</p>
+                <a href="#" class="btn">Saiba Mais</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modalidades Section -->
+    <section class="courses">
+        <div class="container">
+            <h2>Nossas Modalidades</h2>
+            <h3>Modalidades Confirmadas para 2026</h3>
+            <div class="modalities-grid">
+                <div class="modality">
+                    <img src="https://via.placeholder.com/150/333333/ffffff?text=Boxing" alt="Boxing">
+                    <span>Boxing</span>
+                </div>
+                <div class="modality">
+                    <img src="https://via.placeholder.com/150/333333/ffffff?text=Kung+Fu" alt="Kung Fu">
+                    <span>Kung Fu</span>
+                </div>
+                <div class="modality">
+                    <img src="https://via.placeholder.com/150/333333/ffffff?text=Capoeira" alt="Capoeira">
+                    <span>Capoeira</span>
+                </div>
+                <div class="modality">
+                    <img src="https://via.placeholder.com/150/333333/ffffff?text=Judo" alt="Judo">
+                    <span>Judo</span>
+                </div>
+                <div class="modality">
+                    <img src="https://via.placeholder.com/150/333333/ffffff?text=Ju+Jitsu" alt="Ju Jitsu">
+                    <span>Ju Jitsu</span>
+                </div>
+                <div class="modality">
+                    <img src="https://via.placeholder.com/150/333333/ffffff?text=Karate" alt="Karate">
+                    <span>Karate</span>
+                </div>
+                <div class="modality">
+                    <img src="https://via.placeholder.com/150/333333/ffffff?text=Taekwondo" alt="Taekwondo">
+                    <span>Taekwondo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Inscrições -->
+    <section class="cta" id="inscricoes">
+        <div class="container">
+            <h2>Inscrições Abertas</h2>
+            <p>Garanta a participação da sua academia no maior evento de artes marciais do país!</p>
+            <p>Cadastre seu clube exclusivamente em nossos terminais</p>
+            <div class="contacts">
+                940 431 447 | 923 089 439<br>
+                923 972 658 | 924 975 759
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>
